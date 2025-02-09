@@ -17,6 +17,8 @@ body {
 }
 
 .navbar {
+    position:sticky;
+    top:0;
     overflow: hidden;
     background-color:#0c1230;
 
@@ -80,4 +82,18 @@ navbar a.hover {
     padding: 20px;
     text-align:center;
     background: #b7b7ca;
+}
+
+.hero-img {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));/*This is a placeholder until we actually find a hero image*/
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+}
+
+.hero-text {
+
 }
