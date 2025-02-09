@@ -40,3 +40,25 @@ navbar a.hover {
     background-color: #6f6586;
     color: rgb(239, 237, 243);
 }
+
+* {
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.side {
+    flex: 30%;
+    background-color:#b7b7ca;
+    padding: 20px; 
+}
+
+.main {
+    flex: 70%;
+    background-color:#e2e4ee;
+    padding: 20px;
+
+}
