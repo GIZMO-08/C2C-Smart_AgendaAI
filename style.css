@@ -75,3 +75,9 @@ navbar a.hover {
         width:100%;
     }
 }
+
+.footer {
+    padding: 20px;
+    text-align:center;
+    background: #b7b7ca;
+}
