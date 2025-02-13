@@ -7,7 +7,7 @@ body {
 .header {
     padding: 80px;
     text-align: center;
-    /*background: #e2e4ee;*/
+    background: #0c1230;
     color: #dbebee;
 
 }
@@ -40,7 +40,7 @@ body {
 }
 
 .navbar a.hover {
-    /*background-color: #6f658669;*/
+    background-color: #6f658669;*/
     color: rgb(239, 237, 243);
     letter-spacing: 0.25em;
     box-shadow: 0 0 35px var(--clr);
@@ -110,7 +110,7 @@ body {
 .btn {
     position: relative;
     background:#e2e4ee;
-    color:#0c1230;
+    color:#374275;
     text-decoration:none;
     text-transform: uppercase;
     font-size: 1.5em;
