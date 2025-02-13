@@ -104,7 +104,7 @@ navbar a.hover {
 
 }
 
-a {
+.btn {
     position: relative;
     background:#e2e4ee;
     color:#0c1230;
