@@ -148,7 +148,7 @@ ul li {
 
 }
 
-a {
+.btn {
     position: center;
     display:flex;
     justify-content: space-evenly;
@@ -165,21 +165,21 @@ a {
 }
 
 
-a:hover {
+.btn:hover {
    /* background: var(--clr);*/
     letter-spacing: 0.25em;
     box-shadow: 0 0 35px var(--clr);
     color:rgb(221, 219, 233);
 }
 
-a:before {
+.btn:before {
     content: '';
     position: absolute;
     inset: 2px;
     background:#0c1230;
 }
 
-a span{
+.btn span{
     position: relative;
     z-index: 1;
 }
