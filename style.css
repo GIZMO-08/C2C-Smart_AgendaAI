@@ -40,7 +40,7 @@ body {
 }
 
 .navbar a.hover {
-    background-color: #6f658669;*/
+    background-color: #6f658669;
     color: rgb(239, 237, 243);
     letter-spacing: 0.25em;
     box-shadow: 0 0 35px var(--clr);
