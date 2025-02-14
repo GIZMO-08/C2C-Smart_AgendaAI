@@ -25,7 +25,7 @@ body {
 
 }
 
-.navbar a {
+#nav {
     float: left;
     display: block;
     color:#dbebee;
@@ -35,11 +35,11 @@ body {
 
 }
 
-.navbar a.right {
+#nav.right {
     float: right;
 }
 
-.navbar a.hover {
+#nav:hover {
     background-color: #6f658669;
     color: rgb(239, 237, 243);
     letter-spacing: 0.25em;
