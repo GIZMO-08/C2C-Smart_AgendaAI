@@ -107,7 +107,7 @@ body {
 
 }
 
-.btn {
+a {
     position: relative;
     background:#e2e4ee;
     color:#374275;
@@ -122,21 +122,21 @@ body {
 }
 
 
-.btn:hover {
+a:hover {
    /* background: var(--clr);*/
     letter-spacing: 0.25em;
     box-shadow: 0 0 35px var(--clr);
     color:rgb(221, 219, 233);
 }
 
-.btn:before {
+a:before {
     content: '';
     position: absolute;
     inset: 2px;
     background:#0c1230;
 }
 
-.btn span{
+a span{
     position: relative;
     z-index: 1;
 }
