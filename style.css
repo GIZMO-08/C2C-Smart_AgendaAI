@@ -1,13 +1,14 @@
 body {
 
-    font-family:Arial, Helvetica, sans-serif
+    font-family:Arial, Helvetica, sans-serif;
+    background: #0c1230;
 }
 
 .header {
     padding: 80px;
     text-align: center;
-    background: #e2e4ee;
-    color: #0c1230;
+    background: #0c1230;
+    color: #dbebee;
 
 }
 
@@ -16,16 +17,57 @@ body {
 
 }
 
-.navbar {
+ul {
+    list-style:none ;
+}
+
+ul li {
+    display: inline-block;
+    margin: 10px 0;
+}
+ ul li a{
+    display:block;
+    text-decoration: none;
+    text-transform: uppercase;
+    color:#b7b7ca;
+    margin: 0 10px;
+    padding: 10px 25x;
+    position: sticky;
+ }
+
+ ul li a:hover::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left:0;
+    height:100% ;
+    width:100% ;
+    background:#4b23ff ;
+    z-index: -1;
+    box-shadow: 0 0 10px #4b23ff,
+                0 0 10px #4b23ff,
+                0 0 10px #4b23ff,
+                0 0 10px #4b23ff;
+    transition: 0.25s;
+ }
+
+
+ ul li a::before{
+    width:100%
+ }
+
+/*.navbar {
     position:sticky;
     top:0;
     overflow: hidden;
-    background-color:#0c1230;
+    background-color:#3b4b9983;
 
 }
 
-.navbar a {
-    float: left;
+#nav {
+    float: right;
+    display:flex;
+    justify-content: flex-end;
     display: block;
     color:#dbebee;
     text-align: center;
@@ -34,14 +76,16 @@ body {
 
 }
 
-.navbar a.right {
+#nav.right {
     float: right;
 }
 
-navbar a.hover {
-    background-color: #6f6586;
+#nav:hover {
+    background-color: #6f658600;
     color: rgb(239, 237, 243);
-}
+    letter-spacing: 0.25em;
+    box-shadow: 0 0 35px var(--clr);
+}*/
 
 * {
     box-sizing: border-box;
@@ -102,4 +146,40 @@ navbar a.hover {
     transform: translate(-50%, -50%);
     color: white;
 
+}
+
+.btn {
+    position: center;
+    display:flex;
+    justify-content: space-evenly;
+    background:#e2e4ee;
+    color:#374275;
+    text-decoration:none;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    font-weight: 250;
+    margin: 0;
+    padding: 10px 30px;
+    transition: 0.5s;
+}
+
+
+.btn:hover {
+   /* background: var(--clr);*/
+    letter-spacing: 0.25em;
+    box-shadow: 0 0 35px var(--clr);
+    color:rgb(221, 219, 233);
+}
+
+.btn:before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background:#0c1230;
+}
+
+.btn span{
+    position: relative;
+    z-index: 1;
 }

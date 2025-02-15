@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"name": "c2cbot",
+			"path": "../../c2cbot"
+		}
+	],
+	"settings": {}
+}
