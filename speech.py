@@ -10,6 +10,7 @@
 #source <your-env>/bin/activate
 #pip install google-cloud-speech
 
+#documentation link:https://pypi.org/project/google-cloud-speech/
 
 from google.cloud import speech_V1 as speech
 
