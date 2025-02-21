@@ -51,3 +51,10 @@
           calendar.render()
 
       </script>
+            header{
+                left: 'month, agendaWeek, agendaDay, list';
+                center: 'title';
+                right: 'prev, today, next';
+
+            }
+         
