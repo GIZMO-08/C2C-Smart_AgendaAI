@@ -1,0 +1,53 @@
+   <script type='importmap'>
+        {
+          "imports": {
+            "@fullcalendar/core": "https://cdn.skypack.dev/@fullcalendar/core@6.1.15",
+            "@fullcalendar/daygrid": "https://cdn.skypack.dev/@fullcalendar/daygrid@6.1.15"
+          }
+        }
+      </script>
+      <script type='module'>
+        import { Calendar } from '@fullcalendar/core'
+        import dayGridPlugin from '@fullcalendar/daygrid'
+  
+        document.addEventListener('DOMContentLoaded', function() {
+         //const calendarEl = document.getElementById('calendar')
+          //const calendar = new Calendar(calendarEl, {
+          let calendarEl = document.getElementById('calendar');
+          let calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+
+            events: [{
+            "title": "First Line<br>Second Line",
+            "start": "2024-05-09T11:00:00.000Z",
+            "end": "2024-05-09T13:00:00.000Z",
+        }],
+
+            eventDidMount: function (info) {
+                //month, weeek and day timeview
+                var _title = info.el.querySelectorAll('.fc-event-title')[0];
+                if (_title) {
+                    _title.innerHTML = info.event.title;
+                }
+                else {
+                    //listview/agenda
+                    var _list_event_title = info.el.querySelectorAll('.fc-list-event-title')[0];
+                    if (_list_event_title) {
+                        var _a = $('a', _list_event_title)[0];
+                        if(_a) {
+                        _a.innerHTML = info.event.title;
+                        }
+                    }
+                
+                }
+
+          //  plugins: [dayGridPlugin],
+            //headerToolbar: {
+              //left: 'prev,next today',
+              //center: 'title',
+              //right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+            //}
+          //})
+          calendar.render()
+
+      </script>
