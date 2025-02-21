@@ -24,15 +24,6 @@
         $('calendar').fullCalendar({
 
 
-            header{
-                left: 'month, agendaWeek, agendaDay, list';
-                center: 'title';
-                right: 'prev, today, next';
-
-            }
-         
-
-
     });
         
 
