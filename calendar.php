@@ -18,7 +18,7 @@
     </div>
 
 </body>
-
+</html>
 <script>
     $(document).ready(function() {
         $('calendar').fullCalendar({
@@ -29,5 +29,3 @@
 
     });
 </script>
-
-</html>
