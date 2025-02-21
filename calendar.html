@@ -1,37 +1,37 @@
-<DOCTYPE! html>
-    <html>
-        <head>
-            <title>Calendar</title>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/> 
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script> 
-        </head>
-        <body>
-            <div class="contain"> 
-                <div id="calendar">
-                    <?php include 'calendar.php';?>     
-        
-                </div>
-        
-        
-            </div>
-        
-        </body>
-        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+</head>
+<body>
+    <h2><center>Calendar</center></h2>
+    <div class="container">
+        <div id="calendar"></div>
+    </div>
 
-              
-        </html>
-
-        
-        <script>
-            $(document).ready(function() {
-                $('calendar').fullCalendar({
-        
-        
+    <script>
+        $(document).ready(function() {
+            $('#calendar').fullCalendar({
+                // You can add events here
+                events: [
+                    {
+                        title: 'Event 1',
+                        start: '2025-02-21'
+                    },
+                    {
+                        title: 'Event 2',
+                        start: '2025-02-22'
+                    }
+                ]
             });
-                
-        
-            });
-        </script>
+        });
+    </script>
+</body>
+</html>
