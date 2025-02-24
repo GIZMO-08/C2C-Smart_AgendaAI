@@ -1,6 +1,4 @@
 
-import .Heroimg.png
-
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: #0c1230;
@@ -143,7 +141,7 @@ body {
     background: #b7b7ca;
   }
   
-  .hero-img {
+  #hero {
     background-image: linear-gradient(
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
