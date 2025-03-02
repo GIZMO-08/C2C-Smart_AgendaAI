@@ -4,6 +4,11 @@ body {
     background: #0c1230;
   }
   
+
+  h1 {
+    color: #fff;
+    text-align: center;
+  }
   
   .nav {
     position: fixed;
