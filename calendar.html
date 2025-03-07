@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+    <link rel="stylesheet" href="calen.css">
+</head>
+<body>
+    <h2><center>Calendar</center></h2>
+    <div class="container">
+        <button id="vocal">Speak</button>
+        <audio id="audioPlayback" controls></audio>
+        <div id="transcription"></div>
+        <div id="calendar"></div>
+      
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#calendar').fullCalendar({
+                // You can add events here
+                events: [
+                    {
+                        title: 'Event 1',
+                        start: '2025-02-21'
+                    },
+                    {
+                        title: 'Event 2',
+                        start: '2025-02-22'
+                    }
+                ]
+            });
+        });
+   
+        function display() {
+        const instructions = `
+        **To manage your schedule using voice commands:**
+
+        1. Start with: "Please add this to my schedule:"
+            - Example: "Please add soccer on May 3rd at 12 PM."
+        
+        2. To remove a task: "Please remove [task name]."
+            - Example: "Please remove soccer."
+
+        3. To modify a task: "Please change [old task] to [new task]."
+            - Example: "Please change soccer to basketball."
+
+        **Important Notes:**
+        - You can use month names (e.g., "May") or numbers (e.g., "5") for the date.
+        - Use 12-hour format for time (e.g., "12 PM" or "4:30 PM").
+        `;
+        console.log(instructions); 
+    }
+
+        function process(texts) {
+            const addRegex = /please add this to my schedule: (.+) on (January|February|March|April|May|June|July|August|September|October|November|December) (\d{1,2})(?:st|nd|rd|th)? at (\d{1,2} (?:AM|PM))/i;
+            const addMatch = command.match(addRegex);
+            
+            const removeRegex = /please remove (.+)/i;
+            const removeMatch = command.match(removeRegex);
+            
+            const modifyRegex = /please change (.+) to (.+)/i;
+            const modifyMatch = command.match(modifyRegex);
+            
+            if (addMatch) {
+                const task = addMatch[1];
+                const month = addMatch[2];
+                const day = addMatch[3];
+                const time = addMatch[4];
+                const monthNumber = new Date(Date.parse(month + " 1, 2023")).getMonth() + 1; // +1 because getMonth() is zero-based
+            const formattedDate = `2025-${monthNumber}-${day.padStart(2, '0')}`; // Adjust year as needed
+            
+            addTaskToSchedule(task, formattedDate, time);
+        } else if (removeMatch) {
+            const taskToRemove = removeMatch[1];
+            removeTaskFromSchedule(taskToRemove);
+        } else if (modifyMatch) {
+            const oldTask = modifyMatch[1];
+            const newTask = modifyMatch[2];
+            modifyTaskInSchedule(oldTask, newTask);
+        } else {
+            console.log("Sorry, I didn't understand that. Please follow the instructions.");
+        }
+    }
+   
+    function add(task, date, time) {
+        const eventDateTime = new Date(`${date}T${time}`);
+        calendar.addEvent({
+            title: task,
+            start: eventDateTime,
+            allDay: false // Adjust if it's an all-day event
+        });
+        console.log(`Task added: ${task} on ${date} at ${time}`);
+    }
+
+
+    function remove(task) {
+        const events = calendar.getEvents();
+        const eventToRemove = events.find(event => event.title === task);
+        if (eventToRemove) {
+            eventToRemove.remove();
+            console.log(`Task removed: ${task}`);
+        } else {
+            console.log(`Task not found: ${task}`);
+        }
+    }
+
+    function modifyTaskInSchedule(oldTask, newTask) {
+        const events = calendar.getEvents();
+        const eventToModify = events.find(event => event.title === oldTask);
+        if (eventToModify) {
+            eventToModify.setProp('title', newTask);
+            console.log(`Task modified: ${oldTask} changed to ${newTask}`);
+        } else {
+            console.log(`Task not found: ${oldTask}`);
+        }
+    }
+
+    document.getElementById('transcribeButton').addEventListener('click', async () => {
+      
+        const transcription = await tests(); 
+        processCommand(transcription);
+    });
+
+   </script>
+</body>
+</html>
