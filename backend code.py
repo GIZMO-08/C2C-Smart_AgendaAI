@@ -142,16 +142,5 @@ def get_tasks():
 
 ## this is code that turns speech into text that the LLM model can use to create schedules
 
-from openai import OpenAI
-client = OpenAI()
-
-audio_file= open("/path/to/file/audio.mp3", "rb")
-transcription = client.audio.transcriptions.create(
-    model="whisper-1", 
-    file=audio_file
-)
-
-print(transcription.text)
-
-
+#this was cut to speech.py
 
