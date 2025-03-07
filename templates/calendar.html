@@ -14,7 +14,7 @@
 <body>
     <h2><center>Calendar</center></h2>
     <div class="container">
-        <button id="vocal">Speak</button>
+        <button id="speak_1">Speak</button>
         <audio id="audioPlayback" controls></audio>
         <div id="transcription"></div>
         <div id="calendar"></div>
@@ -89,45 +89,46 @@
         }
     }
    
-    function add(task, date, time) {
-        const eventDateTime = new Date(`${date}T${time}`);
-        calendar.addEvent({
-            title: task,
-            start: eventDateTime,
-            allDay: false // Adjust if it's an all-day event
+        function add(task, date, time) {
+            const eventDateTime = new Date(`${date}T${time}`);
+            calendar.addEvent({
+                title: task,
+                start: eventDateTime,
+                allDay: false // Adjust if it's an all-day event
+            });
+            console.log(`Task added: ${task} on ${date} at ${time}`);
+        }
+
+
+        function remove(task) {
+            const events = calendar.getEvents();
+            const eventToRemove = events.find(event => event.title === task);
+            if (eventToRemove) {
+                eventToRemove.remove();
+                console.log(`Task removed: ${task}`);
+            } else {
+                console.log(`Task not found: ${task}`);
+            }
+        }
+
+        function modify(oldTask, newTask) {
+            const events = calendar.getEvents();
+            const eventToModify = events.find(event => event.title === oldTask);
+            if (eventToModify) {
+                eventToModify.setProp('title', newTask);
+                console.log(`Task modified: ${oldTask} changed to ${newTask}`);
+            } else {
+                console.log(`Task not found: ${oldTask}`);
+            }
+        }
+
+        document.getElementById('speak_1').addEventListener('click', async () => {
+        
+            const transcription = await tests(); 
+            processCommand(transcription);
         });
-        console.log(`Task added: ${task} on ${date} at ${time}`);
-    }
 
-
-    function remove(task) {
-        const events = calendar.getEvents();
-        const eventToRemove = events.find(event => event.title === task);
-        if (eventToRemove) {
-            eventToRemove.remove();
-            console.log(`Task removed: ${task}`);
-        } else {
-            console.log(`Task not found: ${task}`);
-        }
-    }
-
-    function modifyTaskInSchedule(oldTask, newTask) {
-        const events = calendar.getEvents();
-        const eventToModify = events.find(event => event.title === oldTask);
-        if (eventToModify) {
-            eventToModify.setProp('title', newTask);
-            console.log(`Task modified: ${oldTask} changed to ${newTask}`);
-        } else {
-            console.log(`Task not found: ${oldTask}`);
-        }
-    }
-
-    document.getElementById('transcribeButton').addEventListener('click', async () => {
-      
-        const transcription = await tests(); 
-        processCommand(transcription);
-    });
-
+        display();
    </script>
 </body>
 </html>
