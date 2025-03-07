@@ -21,6 +21,10 @@ def home():
 def calendar():
     return render_template('calendar.html')
 
+@app.route('/task')
+def calendar():
+    return render_template('task.html')
+
 # Chat route - handles the conversation with the LLM
 @app.route('/chat', methods=['POST'])
 def chat():
