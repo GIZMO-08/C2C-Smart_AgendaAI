@@ -49,9 +49,23 @@ print(result["text"])
 from transformers import pipeline 
 transcriber = pipeline(model= "openai/whisper-large-v2",device=0,batch_size=2)
 
+
+from openai import OpenAI
+client = OpenAI()
+
+client.files.create(
+  file=open("mydata.jsonl", "rb"),
+  purpose="fine-tune"
+)
+
+
 audio_filenames = ["recording1.wav"]
 texts = transcriber(audio_filenames)
 print(texts)
+
+
+writer = get_writer(texts, output_dir)
+writer(result, audio_path)
 
 
 #from openai import OpenAI
