@@ -27,7 +27,7 @@
         </div>
 
         <div class="button-container">
-         <button class="btn" id="speak2" style="--clr:#9ac5ff"><span>Speak</span></a>
+         <button class="btn" id="speak2" style="--clr:#9ac5ff"><span>Speak</span></button>
           <p id="status">Press the button to start recording</p>
         </div>
         <script>
@@ -66,16 +66,16 @@
 
                     const data = await response.json();
                     document.getElementById("transcribe").value = data.transcription;
-                    document.getElementById("tobo").value = data.prioritized_tasks;
+                    document.getElementById("todo").value = data.prioritized_tasks;
                     document.getElementById("status").innerText = "Done!";
                 } catch (error) {
                     document.getElementById("status").innerText = "Error processing request.";
                     console.error(error);
                 }
             };
-
+            
+        }
         </script>
 
     </body>
 </html>
-
