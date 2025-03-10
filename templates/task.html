@@ -15,21 +15,66 @@
                 <li><a href="#">Contact Us</a></li>
               </ul>
             </nav>
-          </div>
+        </div>
           <br>
           <h1 class="text">Task Prioritization</h1>
           <br>
           <br>
           
         <div class="contain">
-            <textarea class="text-box" id="transit" placeholder="User's input appears here" rows="10"></textarea>
-            <textarea class="text-box" id="todo" placeholder="Prioritized to-do list items will appears here" rows="10"></textarea>
+            <textarea class="text-box" id="transcribe" placeholder="User's input appears here" readonly rows="10"></textarea>
+            <textarea class="text-box" id="todo" placeholder="Prioritized to-do list items will appears here" readonly rows="10"></textarea>
         </div>
 
         <div class="button-container">
-         <button class="btn" id="speakButton" style="--clr:#9ac5ff"><span>Speak</span></a>
+         <button class="btn" id="speak2" style="--clr:#9ac5ff"><span>Speak</span></a>
+          <p id="status">Press the button to start recording</p>
         </div>
+        <script>
+                    let mediaRecorder;
+        let audioChunks = [];
 
+        document.getElementById("speak2").addEventListener("click", async () => {
+            if (!mediaRecorder || mediaRecorder.state === "inactive") {
+                startRecording();
+            } else {
+                stopRecording();
+            }
+        });
+
+        async function startRecording() {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+            audioChunks = [];
+
+            mediaRecorder.ondataavailable = event => {
+                audioChunks.push(event.data);  
+            };
+
+            mediaRecorder.onstop = async () => {
+                const audioBlob = new Blob(audioChunks, { type: "audio/wav" });
+                const formData = new FormData();
+                formData.append("audio", audioBlob, "recording.wav");
+
+                document.getElementById("status").innerText = "Processing transcription...";
+
+                try {
+                    const response = await fetch("http://192.168.1.160:5000//transcribe", {
+                        method: "POST",
+                        body: formData
+                    });
+
+                    const data = await response.json();
+                    document.getElementById("transcribe").value = data.transcription;
+                    document.getElementById("tobo").value = data.prioritized_tasks;
+                    document.getElementById("status").innerText = "Done!";
+                } catch (error) {
+                    document.getElementById("status").innerText = "Error processing request.";
+                    console.error(error);
+                }
+            };
+
+        </script>
 
     </body>
 </html>
