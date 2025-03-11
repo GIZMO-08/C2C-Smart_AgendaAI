@@ -1,0 +1,22 @@
+#recording feature
+import sounddevice as sd
+import wavio as wv #pip install wavio
+
+
+#sample frequency
+
+freq = 44100
+
+#recording max length
+
+duration = 30
+#start the recorder
+
+recording = sd.rec(int(duration * freq),sampleRate = freq,
+channels = 2)
+
+sd.wait()
+
+
+#create audio file
+wv.write("recording1.wav", freq, recording)

@@ -11,36 +11,54 @@
 #pip install google-cloud-speech
 
 #documentation link:https://pypi.org/project/google-cloud-speech/
+import whisper
+import pyaudio
+import wave 
+import keyboard
+import time
 
-#recording feature
-import sounddevice as sd
-import wavio as wv #pip install wavio
+FORMAT = pyaudio.paInt16
+CHANNELS = 1
+RATE = 44100
+CHUNK = 1024
+OUTPUT_FILENAME = "recording1.wav"
+RECORD_SECONDS = 60
 
+audio = pyaudio.PyAudio()
+stream = audio.open(format=FORMAT, channels=CHANNELS, rate=RATE, input=True, frames_per_buffer=CHUNK)
 
-#sample frequency
+frames = []
 
-freq = 44100
+print("debug log: press Space to start recording")
+keyboard.wait('space')
+print("Debug log: recording... [Space] or wait 60 seconds for stop")
+time.sleep(0.2)
 
-#recording max length
+while true:
+  for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
+    try:
+      data = stream.read(CHUNK)
+      frames.append(data)
+    except KeyboardInterrupt:
+        break
+      if keyboard.is_pressed('space')
+        print("Recording stopping...")
+        time.sleep(0.2)
+        break
 
-duration = 30
-#start the recorder
+stream.stop_stream()
+stream.close()
+p.terminate()
 
-recording = sd.rec(int(duration * freq),sampleRate = freq,
-channels = 2)
-
-sd.wait()
-
-
-#create audio file
-wv.write("recording1.wav", freq, recording)
-
-#obtained from:
-#https://www.geeksforgeeks.org/create-a-voice-recorder-using-python/
-
+wf = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
+wf.setnchannels(CHANNELS)
+wf.setsampwidth(p.get_sample_size(FORMAT))
+wf.setframerate(RATE)
+wf.writeframes(b''.join(frames))
+wf.close()
 
 #whisper import and setup
-import whisper
+
 
 model = whipser.load_model("large-v2")
 result = model.transcribe("recording1.wav")
