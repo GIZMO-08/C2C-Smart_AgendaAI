@@ -86,4 +86,4 @@ def clear_session():
     return jsonify({'status': 'session cleared'})
 
 if __name__ == '__main__':
-    app.run(host='192.168.1.160', port=5000, debug=True)
+    app.run(host='192.168.1.160', port=8080, debug=True)
