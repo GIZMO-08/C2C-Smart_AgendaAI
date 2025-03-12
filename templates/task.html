@@ -43,6 +43,8 @@
         });
 
         async function startRecording() {
+
+            alert("Accessing your microphone to record your to-do list");
             const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
             mediaRecorder = new MediaRecorder(stream);
             audioChunks = [];
