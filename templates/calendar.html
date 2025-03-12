@@ -67,11 +67,31 @@
 
         button.addEventListener("click", function() {
             text.style.display = "block";
-            alert("Accessing your microphone to record your to-do list");
+           
         });
        
      
     }
+    document.getElementById('speak_1').addEventListener('click', async () => {
+    alert("Speak button clicked! Processing voice input...");
+    
+    try {
+        const response = await fetch('/transcribe', {
+            method: 'POST'
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        const transcription = data.transcription;
+        process(transcription);
+    } catch (error) {
+        console.error('Error during transcription:', error);
+    }
+});
+
 
         function process(texts) {
             const addRegex = /please add this to my schedule: (.+) on (January|February|March|April|May|June|July|August|September|October|November|December) (\d{1,2})(?:st|nd|rd|th)? at (\d{1,2} (?:AM|PM))/i;
