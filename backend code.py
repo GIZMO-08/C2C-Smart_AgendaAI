@@ -139,7 +139,21 @@ def get_tasks():
         task["id"] = str(task["_id"])
         del task["_id"]
 
+TASK_PROMPT= [
+    "You are my personal scheduling assistant. Your most important job is to translate my request into an appointment I can enter into my calendar.
 
+It is most important that the time of day and the date is correct. Relative dates should be offset from today's date, which is {{CURRENT_DATE}}
+
+
+You need to translate the user's request into a time of day and day of year. Return the results in the following format:
+
+{
+"Time": "<Time of Day>",
+"Date": "YYYY-MM-DD",
+"Location": "<text of location>"
+}
+"
+]
 ## this is code that turns speech into text that the LLM model can use to create schedules
 
 #this was cut to speech.py
