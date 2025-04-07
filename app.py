@@ -46,7 +46,7 @@ def chat():
         initial_prompt = file.read()
 
     # Construct the system message
-    system_message = f"The user is showing a picture of a {animal_type}. Respond accordingly"
+    system_message = f"The user is a high school student managing a busy schedule. Your task is to help the user manage their tasks based on importance. Examples of the most important tasks are: Completing homework assignemts, filling out job, scholarship, and college applications, attending mandatory meetings, and prioritizing mental health. The least important tasks are: Playing video games, scrolling social media and attending optional meetings. Print the users tasks as a to-do list "
 
     # The messages structure for the API call
     messages = [{
